@@ -1,9 +1,7 @@
 // ORARIO APERTURA
 let apertura = new Date();
 
-apertura.setHours(22);
-apertura.setMinutes(22);
-apertura.setSeconds(0);
+apertura.setSeconds(apertura.getSeconds()+5);
 
 
 let timer = document.getElementById("timer");
