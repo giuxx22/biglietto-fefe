@@ -20,12 +20,38 @@ let controllo = setInterval(() => {
 
     if (tempo <= 0) {
 
-        clearInterval(controllo);
+    clearInterval(controllo);
 
-        countdown.style.display = "none";
-        envelope.classList.remove("hidden");
+    countdown.style.display = "none";
+    envelope.classList.remove("hidden");
 
-    } else {
+    // FUOCHI D'ARTIFICIO 🎆
+
+    for (let i = 0; i < 30; i++) {
+
+        let fuoco = document.createElement("div");
+
+        fuoco.className = "firework";
+        fuoco.innerHTML = "✨";
+
+        fuoco.style.left = Math.random() * 100 + "vw";
+        fuoco.style.top = Math.random() * 70 + "vh";
+
+        fuoco.style.animationDuration =
+        (1 + Math.random() * 2) + "s";
+
+        document.body.appendChild(fuoco);
+
+
+        setTimeout(() => {
+
+            fuoco.remove();
+
+        }, 3000);
+
+    }
+
+} else {
 
         let secondi = Math.floor(tempo / 1000);
 
