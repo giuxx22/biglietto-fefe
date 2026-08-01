@@ -1,14 +1,15 @@
-// ORARIO APERTURA
+// ORARIO APERTURA (prova: 10 secondi)
 let apertura = new Date();
 
-apertura.setSeconds(apertura.getSeconds()+10);
+apertura.setSeconds(apertura.getSeconds() + 10);
+
 
 let timer = document.getElementById("timer");
 let countdown = document.getElementById("countdown");
 let envelope = document.getElementById("envelope");
 
 
-// CONTROLLO ORA
+// CONTROLLO TIMER
 
 let controllo = setInterval(() => {
 
@@ -26,64 +27,50 @@ let controllo = setInterval(() => {
 
     } else {
 
+        let secondi = Math.floor(tempo / 1000);
 
-        let ore = Math.floor(tempo / 3600000);
-
-        let minuti = Math.floor(
-            (tempo % 3600000) / 60000
-        );
-
-        let secondi = Math.floor(
-            (tempo % 60000) / 1000
-        );
-
-
-        timer.innerHTML =
-        ore + " : " +
-        minuti + " : " +
-        secondi;
+        timer.innerHTML = "00 : 00 : " + secondi;
 
     }
 
 
-},1000);
+}, 1000);
 
 
 
 // APERTURA BUSTA
 
-envelope.addEventListener("click",()=>{
+envelope.addEventListener("click", () => {
 
     envelope.classList.add("open");
 
 
     // CUORI
 
-    setInterval(()=>{
+    setInterval(() => {
 
-        let cuore=document.createElement("div");
+        let cuore = document.createElement("div");
 
-        cuore.className="heart";
-        cuore.innerHTML="❤️";
+        cuore.className = "heart";
+        cuore.innerHTML = "❤️";
 
-        cuore.style.left =
-        Math.random()*100+"vw";
-
+        cuore.style.left = Math.random() * 100 + "vw";
 
         cuore.style.animationDuration =
-        (3+Math.random()*3)+"s";
+        (3 + Math.random() * 3) + "s";
 
 
         document.body.appendChild(cuore);
 
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
             cuore.remove();
 
-        },6000);
+        }, 6000);
 
-    },300);
+
+    }, 300);
 
 
 });
