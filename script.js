@@ -1,8 +1,7 @@
 // ORARIO APERTURA
 let apertura = new Date();
 
-apertura.setSeconds(apertura.getSeconds()+5);
-
+apertura.setSeconds(apertura.getSeconds()+10);
 
 let timer = document.getElementById("timer");
 let countdown = document.getElementById("countdown");
