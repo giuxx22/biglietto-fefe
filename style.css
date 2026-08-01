@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle, #9b59b6, #24002f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Georgia", serif;
+    overflow: hidden;
+    color: white;
+}
+
+
+.container {
+    text-align: center;
+}
+
+
+/* COUNTDOWN */
+
+#countdown {
+    font-size: 26px;
+    color: #f8eaff;
+    text-shadow: 0 0 15px #d8a7ff;
+}
+
+
+#timer {
+    margin-top: 20px;
+    font-size: 45px;
+    color: #ffffff;
+}
+
+
+/* NASCONDE LA BUSTA FINO ALL'ORA */
+
+.hidden {
+    display: none;
+}
+
+
+
+/* BUSTA VIOLA CHIARO */
+
+#envelope {
+
+    width: 340px;
+    height: 230px;
+
+    background: #eadcff;
+
+    position: relative;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+    0 20px 60px black,
+    0 0 30px #d8a7ff;
+
+    transition: 1s;
+
+}
+
+
+
+/* PARTE SOPRA DELLA BUSTA */
+
+.flap {
+
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+
+    border-top: 120px solid #c9a7ff;
+
+    top: 0;
+
+}
+
+
+
+/* LETTERA */
+
+.letter {
+
+    position: absolute;
+
+    background: white;
+
+    color: #6a0dad;
+
+    width: 270px;
+
+    min-height: 170px;
+
+    left: 35px;
+
+    top: 50px;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    opacity: 0;
+
+    transition: 2s;
+
+    box-shadow:
+    0 10px 30px #555;
+
+}
+
+
+
+.open .letter {
+
+    top: -160px;
+
+    opacity: 1;
+
+}
+
+
+
+/* TITOLO LETTERA */
+
+h1 {
+
+    color: #310344;
+
+    font-size: 28px;
+
+}
+
+
+
+/* CUORI */
+
+.heart {
+
+    position: absolute;
+
+    color: #ffb6e6;
+
+    font-size: 28px;
+
+    text-shadow:
+    0 0 10px white;
+
+    animation: cuore 5s linear forwards;
+
+}
+
+
+
+@keyframes cuore {
+
+
+    from {
+
+        transform:
+        translateY(100vh)
+        scale(1);
+
+        opacity: 1;
+
+    }
+
+
+    to {
+
+        transform:
+        translateY(-20vh)
+        scale(1.8);
+
+        opacity: 0;
+
+    }
+
+}
