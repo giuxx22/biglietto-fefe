@@ -1,4 +1,3 @@
-// ORARIO APERTURA (prova: 10 secondi)
 let apertura = new Date();
 
 apertura.setHours(22);
@@ -11,65 +10,9 @@ let countdown = document.getElementById("countdown");
 let envelope = document.getElementById("envelope");
 
 
-let adesso = new Date();
+// FUNZIONE FUOCHI
 
-
-// se l'orario è già passato apre subito
-if (adesso >= apertura) {
-
-    countdown.style.display = "none";
-    envelope.classList.remove("hidden");
-    envelope.classList.add("open");
-
-} else {
-
-
-let controllo = setInterval(() => {
-
-    let adesso = new Date();
-
-    let tempo = apertura - adesso;
-
-
-    if (tempo <= 0) {
-
-        clearInterval(controllo);
-
-        countdown.style.display = "none";
-
-        envelope.classList.remove("hidden");
-
-        // apre automaticamente
-        envelope.classList.add("open");
-
-
-    } else {
-
-
-        let ore = Math.floor(tempo / 3600000);
-
-        let minuti = Math.floor(
-            (tempo % 3600000) / 60000
-        );
-
-        let secondi = Math.floor(
-            (tempo % 60000) / 1000
-        );
-
-
-        timer.innerHTML =
-        ore + " : " +
-        minuti + " : " +
-        secondi;
-
-    }
-
-
-},1000);
-
-}
-
-    // FUOCHI D'ARTIFICIO 🎆
+function fuochi() {
 
     for (let i = 0; i < 30; i++) {
 
@@ -95,27 +38,87 @@ let controllo = setInterval(() => {
 
     }
 
+}
+
+
+// APERTURA AUTOMATICA
+
+function apriSorpresa() {
+
+    countdown.style.display = "none";
+
+    envelope.classList.remove("hidden");
+
+    envelope.classList.add("open");
+
+    fuochi();
+
+}
+
+
+
+// CONTROLLO ORARIO
+
+let adesso = new Date();
+
+
+if (adesso >= apertura) {
+
+    apriSorpresa();
+
+
 } else {
 
-        let secondi = Math.floor(tempo / 1000);
 
-        timer.innerHTML = "00 : 00 : " + secondi;
-
-    }
+    let controllo = setInterval(() => {
 
 
-}, 1000);
+        let adesso = new Date();
+
+        let tempo = apertura - adesso;
+
+
+        if (tempo <= 0) {
+
+            clearInterval(controllo);
+
+            apriSorpresa();
+
+
+        } else {
+
+
+            let ore = Math.floor(tempo / 3600000);
+
+            let minuti = Math.floor(
+                (tempo % 3600000) / 60000
+            );
+
+            let secondi = Math.floor(
+                (tempo % 60000) / 1000
+            );
+
+
+            timer.innerHTML =
+            ore + " : " +
+            minuti + " : " +
+            secondi;
+
+        }
+
+
+    },1000);
+
+}
 
 
 
-// APERTURA BUSTA
+// APERTURA CON CLICK + CUORI
 
 envelope.addEventListener("click", () => {
 
     envelope.classList.add("open");
 
-
-    // CUORI
 
     setInterval(() => {
 
@@ -137,10 +140,10 @@ envelope.addEventListener("click", () => {
 
             cuore.remove();
 
-        }, 6000);
+        },6000);
 
 
-    }, 300);
+    },300);
 
 
 });
