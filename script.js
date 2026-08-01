@@ -1,7 +1,9 @@
 // ORARIO APERTURA (prova: 10 secondi)
 let apertura = new Date();
 
-apertura.setSeconds(apertura.getSeconds() + 10);
+apertura.setHours(22);
+apertura.setMinutes(22);
+apertura.setSeconds(0);
 
 
 let timer = document.getElementById("timer");
@@ -9,7 +11,18 @@ let countdown = document.getElementById("countdown");
 let envelope = document.getElementById("envelope");
 
 
-// CONTROLLO TIMER
+let adesso = new Date();
+
+
+// se l'orario è già passato apre subito
+if (adesso >= apertura) {
+
+    countdown.style.display = "none";
+    envelope.classList.remove("hidden");
+    envelope.classList.add("open");
+
+} else {
+
 
 let controllo = setInterval(() => {
 
@@ -20,10 +33,41 @@ let controllo = setInterval(() => {
 
     if (tempo <= 0) {
 
-    clearInterval(controllo);
+        clearInterval(controllo);
 
-    countdown.style.display = "none";
-    envelope.classList.remove("hidden");
+        countdown.style.display = "none";
+
+        envelope.classList.remove("hidden");
+
+        // apre automaticamente
+        envelope.classList.add("open");
+
+
+    } else {
+
+
+        let ore = Math.floor(tempo / 3600000);
+
+        let minuti = Math.floor(
+            (tempo % 3600000) / 60000
+        );
+
+        let secondi = Math.floor(
+            (tempo % 60000) / 1000
+        );
+
+
+        timer.innerHTML =
+        ore + " : " +
+        minuti + " : " +
+        secondi;
+
+    }
+
+
+},1000);
+
+}
 
     // FUOCHI D'ARTIFICIO 🎆
 
